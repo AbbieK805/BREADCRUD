@@ -1,11 +1,11 @@
 const React = require('react')
 const Default = require('./layouts/default')
 
-function Edit({ bread, index }) {
+function Edit({ bread }) {
     return (
         <Default>
             <h2>Edit Page</h2>
-            <form method="POST" action={`/breads/${index}?_method=PUT`}>
+            <form method="POST" action={`/breads/${bread._id}?_method=PUT`}>
                 <label htmlFor='name'>Name</label>
                 <input
                     type='text'
@@ -28,9 +28,20 @@ function Edit({ bread, index }) {
                     id="hasGluten"
                     defaultChecked={bread.hasGluten}
                 />
+                <label htmlFor="baker">Baker</label>
+                <select name="baker" id="baker">
+                    <option value="Rachel">Rachel</option>
+                    <option value="Monica">Monica</option>
+                    <option value="Joey">Joey</option>
+                    <option value="Chandler">Chandler</option>
+                    <option value="Ross">Ross</option>
+                    <option value="Phoebe">Phoebe</option>
+                </select>
                 <br></br>
                 <input type="submit" />
             </form>
         </Default>
     )
 }
+
+module.exports = Edit
